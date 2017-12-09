@@ -1,0 +1,25 @@
+//Программа поиска всех строк в файле tast1.txt, в которых содержится подстрока "test"
+#include "stdafx.h"
+#include <string.h>
+#define BUFFER_SIZE 1024
+int main()
+{
+	{
+		FILE*file;
+		char string_first[BUFFER_SIZE];
+		char string_second[BUFFER_SIZE] = "test";
+		char* result = 0;
+		errno_t err = fopen_s(&file, "C:\\Users\\uc2\\Desktop\\file.txt", "r");
+		{
+			while (fgets(string_first, BUFFER_SIZE, file) != NULL) {
+				//printf("%s", string_second);
+				result = strstr(string_first, string_second);
+				if (result != 0)
+					printf("%s\n", string_first);
+			}
+		}
+		
+		fclose(file);
+		return 0;
+	}
+}
