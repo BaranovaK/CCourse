@@ -1,0 +1,22 @@
+//Заполнить файл 1000 случайными веществеными числами в диапазоне от -100 до 100 с использованием функции rand()
+#include "stdafx.h"
+#include <stdlib.h>
+int main()
+{
+	FILE *file;
+	int value = 0;
+	errno_t err = fopen_s(&file, "C:\\Users\\uc2\\Desktop\\file.txt", "w");
+	if (err)
+		printf_s("The file file1.txt was not opened\n");
+	else
+	{
+
+			for (int i = 0; i < 1000;i++)
+			{
+				value = rand() % 200 - 100;
+					fprintf_s(file, "%d\n", value);
+			}
+	}
+	fclose(file);
+	return 0;
+}
