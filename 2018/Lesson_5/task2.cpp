@@ -91,7 +91,7 @@ void deleteValue(Node *root, int value) {
 	removeNodeByPtr(target);
 }
 
-void printTree(Node *root, const char *dir, int level) {
+void printTree(Node *root, const char *dir, int level) { //Вывод дерева, как оно есть без сортировки
 	if (root) {
 		printf("lvl %d %s = %d\n", level, dir, root->data);
 		printTree(root->left, "left", level + 1);
@@ -133,11 +133,11 @@ void insert(Node **head, int value) {
 		}
 	}
 }
-
-void SortTree(Node *root, const char *dir, int level) {
+//Вывод дерева с сортировкой
+void SortTree(Node *root, const char *dir, int level) { //тут меняем для того, чтобы пошел вывод элементов двоичного дерева в отсортированном порядке,
 	if (root) {
-		SortTree(root->left, "left", level + 1);
-		printf("lvl %d %s = %d\n", level, dir, root->data);
+		SortTree(root->left, "left", level + 1); //Если мы хотим отсортировать по убыванию, то меняем level+1 на level-1+ замена строчек в другом порядке
+		printf("lvl %d %s = %d\n", level, dir, root->data); //функция сама по себе рекурсивная, следовательно, после выполнения нужного возвращается обратно и работаем дальше
 		SortTree(root->right, "right", level + 1);
 
 	}
@@ -158,6 +158,6 @@ int main()
 	printf("max = %d\n", getMaxNode(root)->data);
 	printf("parent of 11 is %d\n", getNodeByValue(root, 11)->parent->data);
 	printf("Sorted Tree:\n");
-	SortTree(root, "root", 0);
+	SortTree(root, "root", 0); //Сортировка дерева,начиная с корня(верхнего числа)
 	return 0;
 }
