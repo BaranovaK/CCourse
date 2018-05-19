@@ -8,7 +8,7 @@
 class queue {
 	int _q[100];
 	int _sloc, _rloc;
-public:
+public:        //публичные данные
 	queue(); // конструктор
 	~queue(); // деструктор
 	void gput(int i);
